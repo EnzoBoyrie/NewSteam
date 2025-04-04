@@ -8,6 +8,9 @@ services:
       - "5173:5173"
     stdin_open: true
     tty: true
+    volumes:
+      - ./frontend:/app # Monte le dossier local dans le conteneur
+      - /app/node_modules # Empêche les conflits avec les modules node
 
   backend:
     build:
@@ -15,21 +18,21 @@ services:
     ports:
       - "5001:5001"
     environment:
-      - DB_HOST=mariadb
-      - DB_USER=root
-      - DB_PASSWORD=example
+      - DB_HOST=mongodb
       - DB_NAME=newsteam
-
-  mariadb:
-    image: mariadb:latest
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: newsteam
-    ports:
-      - "3307:3307"
+    depends_on:
+      - mongodb
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - ./backend:/app # Monte le dossier local dans le conteneur
+      - /app/node_modules # Empêche les conflits avec les modules node
+
+  mongodb:
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
 
 volumes:
-  mariadb_data:
+  mongodb_data:

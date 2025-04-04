@@ -1,14 +1,28 @@
-import mariadb from 'mariadb';
+import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pool = mariadb.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  connectionLimit: 5,
-});
+const client = new MongoClient(`mongodb://${process.env.DB_HOST}:27017`);
 
-export default pool;
+let db;
+
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    db = client.db(process.env.DB_NAME);
+    console.log('Connected to MongoDB!');
+  } catch (err) {
+    console.error('Failed to connect to MongoDB:', err.message);
+    process.exit(1);
+  }
+}
+
+function getDb() {
+  if (!db) {
+    throw new Error('Database not initialized. Call connectToDatabase first.');
+  }
+  return db;
+}
+
+export { connectToDatabase, getDb };

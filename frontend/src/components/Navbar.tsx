@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Navbar.module.css';
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // État pour vérifier si l'utilisateur est connecté
+  const [isModalOpen, setIsModalOpen] = useState(false); // État pour gérer l'ouverture de la modale
+  const [isLoginView, setIsLoginView] = useState(true); // État pour basculer entre login et register
+
+  const handleLoginClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <nav className={styles.navbar}>
       {/* Logo */}
@@ -27,27 +39,60 @@ function Navbar() {
         </button>
       </div>
 
-      {/* User Profile */}
+      {/* User Profile or Login Icon */}
       <div className={styles.user}>
-        {/* Notifications */}
-        <div className={styles.notifications}>
-          <button className={styles.notificationButton}>
-            <img src="./assets/icons/notification-icon.svg" alt="Notifications" />
+        {isLoggedIn ? (
+          <button className={`${styles.userButton} ${isLoggedIn ? 'loggedIn' : ''}`}>
+            <img src="/user-icon.svg" alt="User Profile" />
           </button>
-        </div>
-
-        {/* Steam News */}
-        <div className={styles.steamNews}>
-          <button className={styles.newsButton}>
-            <img src="./assets/icons/news-icon.svg" alt="Steam News" />
+        ) : (
+          <button className={`${styles.userButton} ${isLoggedIn ? 'loggedIn' : ''}`} onClick={handleLoginClick}>
+            <img src="./assets/icons/login-icon.svg" alt="Login" />
           </button>
-        </div>
-
-        {/* User Profile */}
-        <button className={styles.userButton}>
-          <img src="/user-icon.svg" alt="User Profile" />
-        </button>
+        )}
       </div>
+
+      {/* Modal for Login/Register */}
+      {isModalOpen && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            {isLoginView ? (
+              <div className={styles.authBlock}>
+                <button className={styles.closeButton} onClick={closeModal}>X</button>
+                <h2>Login</h2>
+                <form>
+                  <input type="email" placeholder="Email" required />
+                  <input type="password" placeholder="Password" required />
+                  <button type="submit">Login</button>
+                </form>
+                <p>
+                  Don't have an account?{' '}
+                  <span onClick={() => setIsLoginView(false)} className={styles.switchView}>
+                    Register
+                  </span>
+                </p>
+              </div>
+            ) : (
+              <div className={styles.authBlock}>
+                <button className={styles.closeButton} onClick={closeModal}>X</button>
+                <h2>Register</h2>
+                <form>
+                  <input type="text" placeholder="Username" required />
+                  <input type="email" placeholder="Email" required />
+                  <input type="password" placeholder="Password" required />
+                  <button type="submit">Register</button>
+                </form>
+                <p>
+                  Already have an account?{' '}
+                  <span onClick={() => setIsLoginView(true)} className={styles.switchView}>
+                    Login
+                  </span>
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

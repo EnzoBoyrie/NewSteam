@@ -193,11 +193,175 @@
   height: 50px; /* Taille légèrement augmentée */
   width: 50px; /* Assure un format carré */
   border-radius: 50%; /* Forme circulaire */
-  border: 3px solid #66c0f4; /* Bordure bleue élégante */
+  border: 3px solid transparent; /* Pas de bordure par défaut */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  filter: invert(1); /* Rend l'icône blanche */
 }
 
 .userButton img:hover {
   border-color: #ffffff; /* Change la couleur de la bordure au survol */
   box-shadow: 0 0 10px #66c0f4; /* Effet lumineux autour de l'image */
+}
+
+/* Si l'utilisateur est connecté, ajoute une bordure bleue */
+.userButton.loggedIn img {
+  border-color: #66c0f4; /* Bordure bleue élégante */
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Couleur de fond plus sombre */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease; /* Animation d'apparition */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  background-color: #1b1b1b; /* Couleur sombre pour s'accorder avec le thème */
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ombre subtile */
+  color: #ffffff; /* Texte blanc */
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ffffff; /* Bouton de fermeture blanc */
+  transition: transform 0.2s ease;
+}
+
+.closeButton:hover {
+  transform: scale(1.2); /* Zoom léger au survol */
+}
+
+.switchView {
+  color: #66c0f4; /* Couleur bleue élégante */
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.switchView:hover {
+  color: #ffffff; /* Change la couleur au survol */
+}
+
+.authBlock {
+  position: relative; /* Nécessaire pour positionner la croix */
+  background-color: #1e1e1e; /* Fond sombre */
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ombre subtile */
+  width: 100%; /* S'adapte au conteneur */
+  max-width: 400px; /* Largeur maximale */
+  margin: 0 auto; /* Centré */
+  text-align: center;
+  color: #ffffff; /* Texte blanc */
+  font-family: 'Roboto', sans-serif; /* Police moderne */
+}
+
+.authBlock h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffffff; /* Couleur bleue élégante */
+}
+
+.authBlock form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacement entre les champs */
+}
+
+.authBlock input {
+  background-color: #2a2a2a; /* Fond sombre pour les champs */
+  border: 1px solid #444; /* Bordure subtile */
+  border-radius: 8px; /* Coins arrondis */
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #ffffff; /* Texte blanc */
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.authBlock input::placeholder {
+  color: #888888; /* Texte des placeholders */
+}
+
+.authBlock input:focus {
+  border-color: #ffffff; /* Bordure bleue au focus */
+  box-shadow: 0 0 8px rgb(255, 255, 255); /* Effet lumineux */
+}
+
+.authBlock button {
+  background-color: #66c0f4; /* Bouton bleu */
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff; /* Texte blanc */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.authBlock button:hover {
+  background-color: #4a9ed8; /* Bleu plus foncé au survol */
+  transform: scale(1.05); /* Zoom léger */
+}
+
+.authBlock p {
+  font-size: 14px;
+  color: #cccccc; /* Texte gris clair */
+}
+
+.authBlock p span {
+  color: #66c0f4; /* Texte bleu pour les liens */
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.authBlock p span:hover {
+  color: #ffffff; /* Texte blanc au survol */
+}
+
+/* Close Button */
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ffffff; /* Bouton de fermeture blanc */
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.closeButton:hover {
+  transform: scale(1.2); /* Zoom léger */
+  color: #66c0f4; /* Change la couleur au survol */
 }
