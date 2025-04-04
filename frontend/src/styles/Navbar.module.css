@@ -1,0 +1,203 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #121212;
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 50px;
+  cursor: pointer;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.linkItem {
+  position: relative;
+}
+
+.link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif; /* Police moderne */
+  letter-spacing: 1px; /* Espacement entre les lettres */
+  text-transform: uppercase; /* Texte en majuscules */
+  padding: 5px 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.link:hover {
+  color: #121212;
+  background-color: #66c0f4;
+}
+
+.linkItem:hover::after {
+  width: 100%;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #1b1b1b;
+  border-radius: 20px;
+  padding: 5px 10px;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.search input {
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 8px 10px;
+  width: 250px;
+  outline: none;
+}
+
+.search input::placeholder {
+  color: #888888;
+}
+
+.search input:focus {
+  border: none;
+  outline: none;
+}
+
+.searchButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.searchButton img {
+  height: 20px;
+}
+
+.searchButton:hover {
+  transform: scale(1.1);
+}
+
+.search:focus-within {
+  border-color: #66c0f4;
+  background-color: #222;
+}
+
+/* Notifications */
+.notifications {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.notificationButton {
+  background-color: #28a745; /* Vert */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px; /* Coins arrondis */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.notificationButton img {
+  height: 20px;
+  width: 20px;
+  filter: invert(1); /* Rend l'icône blanche */
+}
+
+.notificationButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+  background-color: #218838; /* Vert plus foncé au survol */
+}
+
+/* Steam News */
+.steamNews {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.newsButton {
+  background-color: #007bff; /* Bleu */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px; /* Coins arrondis */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.newsButton img {
+  height: 20px;
+  width: 20px;
+  filter: invert(1); /* Rend l'icône blanche */
+}
+
+.newsButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+  background-color: #0056b3; /* Bleu plus foncé au survol */
+}
+
+/* User Profile */
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.userButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.userButton:hover {
+  transform: scale(1.1); /* Zoom léger au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+}
+
+.userButton img {
+  height: 50px; /* Taille légèrement augmentée */
+  width: 50px; /* Assure un format carré */
+  border-radius: 50%; /* Forme circulaire */
+  border: 3px solid #66c0f4; /* Bordure bleue élégante */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.userButton img:hover {
+  border-color: #ffffff; /* Change la couleur de la bordure au survol */
+  box-shadow: 0 0 10px #66c0f4; /* Effet lumineux autour de l'image */
+}
