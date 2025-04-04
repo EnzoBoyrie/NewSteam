@@ -4,7 +4,7 @@
   justify-content: space-between;
   background-color: #121212;
   padding: 15px 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0,z 0, 0.1);
   border-radius: 20px;
   position: sticky;
   top: 0;
@@ -199,7 +199,7 @@
 }
 
 .userButton img:hover {
-  border-color: #ffffff; /* Change la couleur de la bordure au survol */
+  border-color: #ffffff; /* Change la couleur deo la bordure au survol */
   box-shadow: 0 0 10px #66c0f4; /* Effet lumineux autour de l'image */
 }
 
@@ -266,96 +266,119 @@
 }
 
 .switchView:hover {
+
   color: #ffffff; /* Change la couleur au survol */
 }
 
+/* Auth Block (Login/Register) */
 .authBlock {
   position: relative; /* Nécessaire pour positionner la croix */
-  background-color: #1e1e1e; /* Fond sombre */
-  padding: 30px 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ombre subtile */
-  width: 100%; /* S'adapte au conteneur */
-  max-width: 400px; /* Largeur maximale */
+  background: linear-gradient(145deg, #1e1e1e, #252525); /* Fond avec un léger dégradé */
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Ombre plus marquée */
+  width: 100%;
+  max-width: 420px; /* Largeur maximale */
   margin: 0 auto; /* Centré */
   text-align: center;
   color: #ffffff; /* Texte blanc */
   font-family: 'Roboto', sans-serif; /* Police moderne */
+  animation: slideDown 0.4s ease; /* Animation d'apparition */
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .authBlock h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #ffffff; /* Couleur bleue élégante */
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #66c0f4; /* Couleur bleue élégante */
+  font-weight: bold;
+  text-transform: uppercase; /* Texte en majuscules */
+  letter-spacing: 1.5px; /* Espacement entre les lettres */
 }
 
 .authBlock form {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espacement entre les champs */
+  gap: 20px; /* Espacement entre les champs */
 }
 
 .authBlock input {
   background-color: #2a2a2a; /* Fond sombre pour les champs */
   border: 1px solid #444; /* Bordure subtile */
-  border-radius: 8px; /* Coins arrondis */
-  padding: 10px 15px;
+  border-radius: 10px; /* Coins arrondis */
+  padding: 12px 15px;
   font-size: 16px;
   color: #ffffff; /* Texte blanc */
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .authBlock input::placeholder {
-  color: #888888; /* Texte des placeholders */
+  color: #aaaaaa; /* Placeholder plus clair */
+  font-style: italic; /* Style italique pour le placeholder */
 }
 
 .authBlock input:focus {
-  border-color: #ffffff; /* Bordure bleue au focus */
-  box-shadow: 0 0 8px rgb(255, 255, 255); /* Effet lumineux */
+  border-color: #66c0f4; /* Bordure bleue au focus */
+  box-shadow: 0 0 10px rgba(102, 192, 244, 0.6); /* Effet lumineux */
+  transform: scale(1.02); /* Zoom léger au focus */
 }
 
 .authBlock button {
-  background-color: #66c0f4; /* Bouton bleu */
+  background: linear-gradient(145deg, #66c0f4, #4a9ed8); /* Dégradé bleu */
   border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 16px;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #ffffff; /* Texte blanc */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .authBlock button:hover {
-  background-color: #4a9ed8; /* Bleu plus foncé au survol */
+  background: linear-gradient(145deg, #4a9ed8, #66c0f4); /* Inverse le dégradé au survol */
   transform: scale(1.05); /* Zoom léger */
+  box-shadow: 0 8px 16px rgba(102, 192, 244, 0.5); /* Ombre lumineuse */
 }
 
 .authBlock p {
   font-size: 14px;
   color: #cccccc; /* Texte gris clair */
+  margin-top: 15px;
 }
 
 .authBlock p span {
   color: #66c0f4; /* Texte bleu pour les liens */
   cursor: pointer;
   text-decoration: underline;
-  transition: color 0.3s ease;
+  font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .authBlock p span:hover {
   color: #ffffff; /* Texte blanc au survol */
+  text-shadow: 0 0 5px #66c0f4; /* Effet lumineux au survol */
 }
 
 /* Close Button */
 .closeButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
   color: #ffffff; /* Bouton de fermeture blanc */
   transition: transform 0.2s ease, color 0.3s ease;
@@ -364,4 +387,21 @@
 .closeButton:hover {
   transform: scale(1.2); /* Zoom léger */
   color: #66c0f4; /* Change la couleur au survol */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .authBlock {
+    padding: 30px 20px;
+    max-width: 90%; /* Réduit la largeur sur les petits écrans */
+  }
+
+  .authBlock h2 {
+    font-size: 24px;
+  }
+
+  .authBlock button {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
 }
